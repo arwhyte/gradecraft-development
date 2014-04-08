@@ -213,4 +213,14 @@ class Course < ActiveRecord::Base
   def professor
     users.where(:role => "professor").first
   end
+  
+  #badges
+  def course_badge_count
+   badges.count
+  end
+  
+  def awarded_course_badge_count
+   earned_badges.count
+  end
+  
 end
