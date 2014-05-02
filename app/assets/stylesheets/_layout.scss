@@ -70,6 +70,10 @@ body.logged-in, body.logged-out {
   border-color: #CCC;
 }
 
+.no_padding {
+  padding: 0;
+}
+
 
 /* Allow other things to appear above the timeline */
 .vco-storyjs {

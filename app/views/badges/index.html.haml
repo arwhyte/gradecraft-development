@@ -13,42 +13,25 @@
       .label.round.bold=current_course.awarded_course_badge_count
 
     .small-12.columns
+      - current_course_data.badges.each do |badge|
+        .small-12.medium-6.large-4.columns
+          .small-4.columns
+            //you may need a div here to wrap stuff
+            .badge_wrap.small-12.no_padding.columns
+              %img{:src => badge.icon, :alt => badge.name}
+                %span.badge_number= "25"
+                //add badge link
+          //.small-8.columns
+              
+      
+      
       
       //instructor badge index table
-      %table.responsive
-        %thead
-          %tr
-            %th.center Icon
-            %th Awarded
-            %th Description
-            - if current_course.valuable_badges?
-              %th{"data-sort" => "int"} Value
-            %th Visible to Students
-            %th.button-column
-        %tbody
-          - current_course_data.badges.each do |badge|
-            %tr
-              %td.center
-                %img{:src => badge.icon, :alt => badge.name, :width => "80"}
-              %td= badge.awarded_count
-              %td
-                .bold= link_to badge.name, badge_path(badge)
-                = raw badge.description
-              - if current_course.valuable_badges?
-                %td= points badge.point_total
-              %td
-                - if badge.visible?
-                  Yes
-                - else
-                  No
-              %td
-                .button-bar
-                  %ul.button-group.right.round
-                    %li= link_to "Quick Award", mass_award_badge_path(badge), :class => "button tiny secondary"
-                    %li
-                      %a{:href => edit_badge_path(badge), :class => 'button tiny secondary'}
-                        Edit
-                    %li
-                      %a{:href => badge_path(badge), :method => :delete, :data => { confirm: 'Are you sure?' }, :class => "button tiny secondary" }
-                        Delete
+      
+      
+      
+      
+      
+      
+      
     .clearfix
