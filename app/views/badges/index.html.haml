@@ -3,7 +3,7 @@
     / Badge Navigation
     = content_nav do
       = render "tabs"
-  
+
     .pagetitle= @title
     %span  
       %b #{term_for :badges} :
@@ -14,24 +14,19 @@
 
     .small-12.columns
       - current_course_data.badges.each do |badge|
-        .small-12.medium-6.large-4.columns
-          .small-4.columns
+        .small-12.medium-12.large-4.columns
+          .small-5.columns
             //you may need a div here to wrap stuff
-            .badge_wrap.small-12.no_padding.columns
-              %img{:src => badge.icon, :alt => badge.name}
-                %span.badge_number= "25"
-                //add badge link
-          //.small-8.columns
-              
-      
-      
-      
+            %span.badge_wrap.small-12.no_padding.columns
+              %img= link_to image_tag(badge.icon), badge_path(badge)
+              %span.badge_number= badge.awarded_count
+              //{:src => badge.icon, :alt => badge.name}
+              //%span.badge_number= "25"
+              //add badge link
+          .small-7.columns
+            .bold= badge.name
+            = raw badge.description
+
       //instructor badge index table
-      
-      
-      
-      
-      
-      
-      
+
     .clearfix
